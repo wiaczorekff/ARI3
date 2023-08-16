@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagina1</title>
+    <style>
+        #fconf{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            border: 1px solid black;
+            background-color: chocolate;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <p>exemplo de WebStorage</p>
+        <button onclick="mostrarOpcoes()">opções: </button>
+            <form name="fconf" id="fconf" action="">
+                <label for="">nome:</label> <br>
+                    <input type="text" name="fnome" id="fnome"> <br>
+                        <br>
+
+                <label for=""> cor de fundo:</label> <br>
+                    <input type="radio" name="fcorf" id="" onclick="defineCor(1,'#b92020')">Vermelho <br>
+                    <input type="radio" name="fcorf" id="" onclick="defineCor(1,'#084d15')">Verde <br>
+                    <input type="radio" name="fcorf" id="" onclick="defineCor(1,'#141bb7')">azul <br>
+                    <input type="radio" name="fcorf" id="" onclick="defineCor(1,'#e3f035')">amarelo <br>
+                        <br>
+                      
+                <label for=""> cor de texto:</label> <br>
+                    <input type="radio" name="fcort" id="" onclick="defineCor(2,'#000000')">preto <br>
+                    <input type="radio" name="fcort" id="" onclick="defineCor(2,'#ffffff')">branco <br>
+                    <input type="radio" name="fcort" id="" onclick="defineCor(2,'#4dddff')">ciano <br>
+                    <input type="radio" name="fcort" id="" onclick="defineCor(2,'#480840')">roxo <br>
+                        <br>
+
+                    <input type="button" value="Gravar" onclick="gravar()">
+
+            
+        </form>
+
+    <script>
+        /* A ideia principal é salvar os dados inseridos no localstorage, para que o user possa
+        ter essas configurções salvas ao sair e entrar novamente na página */
+        let vcorfundo,vcortexto,vnome;
+
+            function defineCor(op,cor){
+                if(op == 1){
+                    document.body.style.backgroundColor = cor;
+                    vcorfundo = cor;
+                }
+                else{
+                    document.body.style.color=cor;
+                    vcortexto = cor;
+                }
+            }
+
+            function gravar(){
+                var form = document.getElementById("fconf");
+                vnome = document.getElementById("fnome").value;
+                localStorage.corfundo = vcorfundo;
+                localStorage.cortexto = vcortexto;
+                localStorage.nome = vnome;
+                form.style.display = "none";
+            }
+
+            function mostrarOpcoes(){
+                let form = document.getElementById("fconf");
+                form.style.display = "block";
+            }
+    </script>
+
+
+
+
+</body>
+</html>
