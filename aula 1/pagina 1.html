@@ -20,6 +20,7 @@
 
 <body>
     <p>exemplo de WebStorage</p>
+    <p id="painel"></p>
         <button onclick="mostrarOpcoes()">opções: </button>
             <form name="fconf" id="fconf" action="">
                 <label for="">nome:</label> <br>
@@ -74,6 +75,20 @@
                 let form = document.getElementById("fconf");
                 form.style.display = "block";
             }
+
+            function inicia(){
+                if(localStorage.nome){
+                    vcorfundo = localStorage.corfundo;
+                    vcortexto = localStorage.cortexto;
+                    vnome = localStorage.nome;
+
+                    defineCor(1,vcorfundo);
+                    defineCor(2,vcortexto);
+                    document.getElementById("painel").innerHTML = "bem vindo" + vnome + "<hr>";
+                }
+            }
+
+            window.addEventListener("load", inicia)
     </script>
 
 
