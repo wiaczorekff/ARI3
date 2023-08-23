@@ -21,30 +21,37 @@
 <body>
     <p>exemplo de WebStorage</p>
     <p id="painel"></p>
-        <button onclick="mostrarOpcoes()">opções: </button>
-            <form name="fconf" id="fconf" action="">
-                <label for="">nome:</label> <br>
-                    <input type="text" name="fnome" id="fnome"> <br>
-                        <br>
 
-                <label for=""> cor de fundo:</label> <br>
-                    <input type="radio" name="fcorf" id="" onclick="defineCor(1,'#b92020')">Vermelho <br>
-                    <input type="radio" name="fcorf" id="" onclick="defineCor(1,'#084d15')">Verde <br>
-                    <input type="radio" name="fcorf" id="" onclick="defineCor(1,'#141bb7')">azul <br>
-                    <input type="radio" name="fcorf" id="" onclick="defineCor(1,'#e3f035')">amarelo <br>
-                        <br>
+        <div id="nomeDialog">
+            <label for="">informe seu nome:</label>
+                <input type="text" name="" id="inputNome">
+                    <button onclick="carregarPreferencias()">Carregar Preferencias</button>
+        </div>
+
+            <button onclick="mostrarOpcoes()">opções: </button>
+                <form name="fconf" id="fconf" action="">
+                    <label for="">nome:</label> <br>
+                        <input type="text" name="fnome" id="fnome"> <br>
+                            <br>
+
+                    <label for=""> cor de fundo:</label> <br>
+                        <input type="radio" name="fcorf" id="" onclick="defineCor(1,'#b92020')">Vermelho <br>
+                        <input type="radio" name="fcorf" id="" onclick="defineCor(1,'#084d15')">Verde <br>
+                        <input type="radio" name="fcorf" id="" onclick="defineCor(1,'#141bb7')">azul <br>
+                        <input type="radio" name="fcorf" id="" onclick="defineCor(1,'#e3f035')">amarelo <br>
+                            <br>
                       
-                <label for=""> cor de texto:</label> <br>
-                    <input type="radio" name="fcort" id="" onclick="defineCor(2,'#000000')">preto <br>
-                    <input type="radio" name="fcort" id="" onclick="defineCor(2,'#ffffff')">branco <br>
-                    <input type="radio" name="fcort" id="" onclick="defineCor(2,'#4dddff')">ciano <br>
-                    <input type="radio" name="fcort" id="" onclick="defineCor(2,'#480840')">roxo <br>
-                        <br>
+                    <label for=""> cor de texto:</label> <br>
+                        <input type="radio" name="fcort" id="" onclick="defineCor(2,'#000000')">preto <br>
+                        <input type="radio" name="fcort" id="" onclick="defineCor(2,'#ffffff')">branco <br>
+                        <input type="radio" name="fcort" id="" onclick="defineCor(2,'#4dddff')">ciano <br>
+                        <input type="radio" name="fcort" id="" onclick="defineCor(2,'#480840')">roxo <br>
+                            <br>
 
-                    <input type="button" value="Gravar" onclick="gravar()">
+                        <input type="button" value="Gravar" onclick="gravar()">      
+                </form>
 
-            
-        </form>
+       
 
     <script>
         /* A ideia principal é salvar os dados inseridos no localstorage, para que o user possa
@@ -64,11 +71,11 @@
 
             function gravar(){
                 var form = document.getElementById("fconf");
-                vnome = document.getElementById("fnome").value;
-                localStorage.corfundo = vcorfundo;
-                localStorage.cortexto = vcortexto;
-                localStorage.nome = vnome;
-                form.style.display = "none";
+                    vnome = document.getElementById("fnome").value;
+                        localStorage.setItem(vnome + "_corfundo", vcorfundo);
+                        localStorage.setItem(vnome + "_cortexto", vcortexto);
+                        localStorage.setItem(vnome + "_nome", vnome);
+                    form.style.display = "none";
             }
 
             function mostrarOpcoes(){
@@ -76,19 +83,22 @@
                 form.style.display = "block";
             }
 
-            function inicia(){
-                if(localStorage.nome){
-                    vcorfundo = localStorage.corfundo;
-                    vcortexto = localStorage.cortexto;
-                    vnome = localStorage.nome;
-
-                    defineCor(1,vcorfundo);
-                    defineCor(2,vcortexto);
-                    document.getElementById("painel").innerHTML = "bem vindo" + vnome + "<hr>";
-                }
+            function carregarPreferencias(){
+                vnome = document.getElementById("inputNome").value;
+                    if(localStorage.getItem(vnome + "_nome")){
+                        vcorfundo = localStorage.getItem(vnome + "_corfundo");
+                        vcortexto = localStorage.getItem(vnome + "_cortexto");
+                        defineCor(1,vcorfundo);
+                        defineCor(2,vcortexto);
+                        document.getElementById("painel").innerHTML = "BEM VINDO " + vnome + "<hr>";
+                        document.getElementById("nomeDialog").style.display="none";
+                    }
+                    else{
+                        alert("PERFIL NÃO ENCONTRADO");
+                    }
             }
 
-            window.addEventListener("load", inicia)
+            //window.addEventListener("load", inicia);
     </script>
 
 
