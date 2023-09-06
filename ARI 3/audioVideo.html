@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="estilo.css" rel="stylesheet" type="text/css" />
+    <title>audio e video</title>
+</head>
+
+<body>
+    <div class="container">
+        <video id="video" src="panadero.mp4" controls width="800px" height="700px" 
+            poster="panaderopp.jpeg"></video>
+            <audio id="audio" src="Gojo-el-panadero-con-el-pan.mp3"></audio>
+        <div class="buttons">
+            <button id="play-video">reproduzir <br> vídeo</button>
+            <button id="pause-video">pausar <br> vídeo</button>
+            <button id="mudo-video">mutar video</button>
+            <button id="avancar-video">avançar +10</button>
+            <button id="retroceder-video">voltar +10</button>
+            <button id="fulls-video">tela cheia</button>
+            <button id="play-audio"> reproduzir audio</button>
+            <button id="pause-audio">pausar audio</button>
+            <button id="mudo-audio">mutar audio</button>
+            <button id="avancar-audio">avancar audio</button>
+            <button id="retroceder-audio">voltar audio</button>
+        </div>
+    </div>
+    <script>
+        const video = document.getElementById('video');
+        const playVideoBtn = document.getElementById('play-video');
+        playVideoBtn.addEventListener('click', function () {
+            video.play();
+        });
+
+        const pauseVideoBtn = document.getElementById('pause-video');
+        pauseVideoBtn.addEventListener('click', function () {
+            video.pause();
+        });
+
+        const muteVideoBtn = document.getElementById('mudo-video');
+        muteVideoBtn.addEventListener('click', function () {
+            video.muted = !video.muted;
+        });
+
+        const avanceVideoBtn = document.getElementById('avancar-video');
+        avanceVideoBtn.addEventListener('click', function () {
+            video.currentTime += 10;
+        });
+
+        const retroVideoBtn = document.getElementById('retroceder-video');
+        retroVideoBtn.addEventListener('click', function () {
+            video.currentTime -= 10;
+        });
+
+        const fullscreenVideoBtn = document.getElementById('fulls-video');
+        fullscreenVideoBtn.addEventListener('click', function () {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } 
+            else if (video.mozRequestFullScreen) {
+                video.mozRequestFullScreen();
+            } 
+            else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+            } 
+            else if (video.msRequestFullscreen) {
+                video.msRequestFullscreen();
+            }
+        });
+
+        const audio = document.getElementById('audio');
+        const playAudioBtn = document.getElementById('play-audio');
+        playAudioBtn.addEventListener('click', function () {
+            audio.play();
+        });
+
+        const pauseAudioBtn = document.getElementById('pause-audio');
+        playAudioBtn.addEventListener('click', function () {
+            audio.pause();
+        })
+
+        const mudoAudio = document.getElementById('mudo-audio');
+        mudoAudio.addEventListener('click', function () {
+           audio.muted = !audio.muted;
+        })
+
+        const avanceAudioBtn = document.getElementById('avancar-audio');
+        avanceAudioBtn.addEventListener('click', function () {
+            audio.currentTime += 10;
+        });
+
+        const retroAudioBtn = document.getElementById('retroceder-audio');
+        retroAudioBtn.addEventListener('click', function () {
+            audio.currentTime -= 10;
+        });
+        
+    </script>
+</body>
+
+
+</body>
+
+</html>
