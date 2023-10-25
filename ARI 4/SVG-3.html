@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>curva quadratica</title>
+</head>
+<body>
+    <svg width="800" height="800">
+        <circle 
+        cx="95" 
+        cy="150" 
+        r="3" 
+        fill="red">
+        <!-- serve de ponto de controle -->
+        </circle>
+
+        <path 
+        d="M 10 80 Q 95 150 180 80" 
+        stroke="black" 
+        fill="transparent">
+        <!-- M=inicia a curva Q= controla a 
+        curva e os 2 ultimos numeos são o final da curva.
+        usar a letra maiuscula, se usar letra minuscula ele fica relativo -->
+        </path>
+
+        <path 
+        d="m 10 80 q 85 -70 170 0"
+        fill="transparent"
+        stroke="black">
+        <!-- essa linha ficou no superior -->
+        </path>
+
+        <path
+        d="M 0 300 Q 200 100, 400 300 Q 600 50, 800 300"
+        fill="blue"> 
+        <!-- aqui estamos juntando 2 curvas e podemos usar quantas quisermos -->
+        </path>
+
+    </svg>
+    
+</body>
+</html>

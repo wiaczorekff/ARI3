@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>usando SVG</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        svg{
+            background-color: blue;
+        }
+    </style>
+
+</head>
+<body>
+    <svg width="800px" height="500px">
+
+            /*corpo*/
+            <polygon points="250,190 210,290 290,290"
+                fill="rose"
+                stroke="black"
+                stroke-width="4"
+            >  /*primera cordenada x e segunda coordenada y ou seja x,y 
+           cada coordenada separada por espaço corresponde a 1 ponto.
+           */ 
+        </polygon>
+
+            /*cabeça*/
+            <circle
+                cx="250" 
+                cy="150"
+                r="40"
+                fill="red"
+                fill-opacity = "0.8"
+                stroke = "black"
+                stroke-width="3">
+        /*aqui criamos um circulo que fica dentro do svg. cx-> corresponde a posição x e o y da posição y
+        r-> é o raio do circulo. fill-> define a cor dele. stroke-> define a borda dele e o width dele 
+        define a largura e o opacity define a opacidade da cor do circulo.*/
+            </circle>
+
+        /*olho esquerdo*/
+        <circle
+            cx="235" 
+            cy="135"
+            r="5"
+            fill="cyan"
+            stroke = "black"
+            stroke-width="2">
+        </circle>
+
+        /*olho direito*/
+        <circle
+            cx="265" 
+            cy="135"
+            r="5"
+            fill="cyan"
+            stroke = "black"
+            stroke-width="2">
+        </circle>
+
+        /*boca*/
+        <ellipse
+            cx="250"
+            cy="165"
+            rx="15"
+            ry="8"
+            stroke="black"
+            fill="white"
+            stroke-width="2">
+        </ellipse>
+
+        /*nariz*/
+        <rect
+            x="245"
+            y="140"
+            width="10"
+            height="15"
+            fill="orange"
+            stroke="black"
+            stroke-width="2"> 
+        </rect>
+
+           /*braço esquerdo*/
+            <rect 
+                x="180"
+                y="210"
+                width="60"
+                height="20"
+                fill="green"
+                stroke="black"
+                stroke-width="3">
+            </rect>
+
+            /*braço direito*/
+            <rect 
+                x="255"
+                y="210"
+                width="60"
+                height="20"
+                fill="green"
+                stroke="black"
+                stroke-width="3">
+            </rect>
+
+            /*perna esquerda*/
+            <rect 
+                x="210"
+                y="290"
+                width="30"
+                height="80"
+                fill="brown"
+                stroke="black"
+                stroke-width="3">
+            </rect>
+
+            /*perna direita*/
+            <rect 
+                x="260"
+                y="290"
+                width="30"
+                height="80"
+                fill="brown"
+                stroke="black"
+                stroke-width="3">
+            </rect>
+
+            /*pé esquerdo*/
+            <ellipse
+                cx="225"
+                cy="370"
+                rx="20"
+                ry="10"
+                fill="black"
+            >
+            </ellipse>
+
+            /*pé direito*/
+            <ellipse
+                cx="275"
+                cy="370"
+                rx="20"
+                ry="10"
+                fill="black"
+            >
+            </ellipse>
+
+            <polyline
+                fill="none"
+                stroke="black"
+                stroke-width="2"
+                points="20,20 50,130 50,20 140,50">
+            </polyline>
+
+            <text 
+            x="300" 
+            y="30" 
+            font-family="verdana" 
+            font-size="20" 
+            text-anchor="end">olá mundo</text>
+
+            <rect 
+                x="10" 
+                y="10"
+                width="50" 
+                height="50" 
+                fill="red" 
+                transform="rotate(45, 35,35) translate(300,200)">
+            </rect>
+
+            <text 
+            x="80"
+            y="40"
+            font-family="verdana"
+            font-size="20"
+            transform="translate(600,300)">
+                translação
+            </text>
+
+            
+    </svg>
+    
+</body>
+</html>

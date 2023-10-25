@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+		//criar uma função
+		function desenhar() {
+            //A seguir, usamos o método querySelector para selecionar o elemento HTML com o ID "minhaTela" (neste caso, o elemento <canvas>) e atribui esse elemento à variável figura
+			var figura = document.querySelector("#minhaTela");
+			//A seguir, testamos se o elemento figura (que é o canvas) tem o método getContext. Este método é específico para elementos de canvas e é usado para obter o contexto de renderização no qual se pode desenhar
+			if(figura.getContext) {
+				//se existir, as linhas a seguir obtêm o contexto de renderização 2D do canvas e atribuem esse contexto às variáveis retangulo.linha e circulo1
+				var retangulo = figura.getContext("2d");
+                var linha = figura.getContext("2d");
+                var circulo1 = figura.getContext("2d");
+					} 
+        
+            //Definimos uma função que aceita um parâmetro chamado tempo
+            function animarCirculo(tempo) {
+                            //Usamos o método clearRect para limpar um retângulo na tela, efetivamente limpamos o canvas
+                            circulo1.clearRect(0, 0, figura.width, figura.height);
+
+                            //As próximas linhas definem as propriedades e desenham um retângulo no canvas:
+                            retangulo.fillStyle = "blue";
+                            retangulo.fillRect(50,50,400,200);
+
+                            //As próximas linhas definem propriedades e desenham linhas no canvas:
+                            linha.lineWidth = 5;
+                            linha.strokeStyle = "red";
+                            linha.moveTo(100,200);
+                            linha.lineTo(170,100);
+                            linha.lineTo(240,300);
+                            linha.stroke();
+
+                            //As próximas linhas definem propriedades e desenham um círculo animado no canvas:
+                            circulo1.fillStyle = "yellow";
+                            circulo1.beginPath();
+                            circulo1.arc(200, 200, 50 + 25 * Math.sin(tempo/5000), 0, 2 * Math.PI);
+                            circulo1.fill();
+                            circulo1.lineWidth = 2;
+                            circulo1.strokeStyle = "aqua"; 
+                            circulo1.stroke();
+                            
+                            //Usamos a função requestAnimationFrame, que é uma API de navegador projetada especificamente para animações em páginas web. Chama a função animarCirculo novamente no próximo quadro de animação, criando uma animação contínua.
+                            requestAnimationFrame(animarCirculo);
+
+                            //Fecha a função desenhar e imediatamente inicia a animação do círculo chamando pela primeira vez animarCirculo
+                         } requestAnimationFrame(animarCirculo);
+                           }  
+
+//função será chamada após o carregamento completo da página
+window.onload = desenhar;
+</script>
+</head>
+<body>
+    <canvas id="minhaTela" height="500" width="600"></canvas>
+</body>
+</html>

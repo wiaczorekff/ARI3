@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canva</title>
+    <script>
+		//criar uma função
+		function desenhar() {
+		var figura = document.querySelector("#minhaTela");
+                //criando uma figura
+		if(figura.getContext){
+                	var circulo1 = figura.getContext("2d"); 
+             
+              		circulo1.fillStyle = "blue";
+            		circulo1.beginPath(); 
+			circulo1.arc(200, 200, 50, 0, Math.PI/1, );
+     			circulo1.fill(); 
+       		}   
+        }
+		window.onload = desenhar;
+</script>
+</head>
+<body>
+    <canvas id="minhaTela" height="500" width="600"></canvas>
+</body>
+</html>

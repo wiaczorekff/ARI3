@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canva</title>
+    <script>
+        function desenhar() {
+            var figura = document.querySelector("#minhaTela");
+
+            if(figura.getContext) {
+                var retangulo = figura.getContext("2d");
+                retangulo.fillStyle = "blue";
+                retangulo.fillRect(50,50,400,200);
+
+                var linha = figura.getContext("2d")
+                linha.beginPath();
+                linha.lineWidth = 5;
+                linha.strokeStyle = "red";
+                linha.moveTo(100,200);
+                linha.lineTo(170,100);
+                linha.lineTo(240,300);
+                linha.stroke();
+
+                
+
+                var circulo1 = figura.getContext("2d"); 
+                circulo1.fillStyle = "yellow";
+
+                circulo1.beginPath(); 
+                circulo1.arc(200, 200, 50, 0, 2 * Math.PI);
+                circulo1.fill();
+
+                circulo1.lineWidth = 2; 
+                circulo1.strokeStyle = "black"; 
+                circulo1.stroke(); 
+
+                let curva = figura.getContext("2d");
+                curva.beginPath();
+                curva.lineWidth = 5;
+                curva.strokeStyle = "red";
+                curva.moveTo(500,500);
+                curva.quadraticCurveTo(650,200, 800, 500);
+                curva.stroke();
+
+                function animarCirculo1(tempo) {
+                    circulo1.clearRect(0, 0, figura.width, figura.height);
+                    retangulo.fillStyle = "blue";
+                    retangulo.fillRect(50,50,400,200);
+
+                    linha.lineWidth = 5;
+                    linha.strokeStyle = "red";
+                    linha.moveTo(100,200);
+                    linha.lineTo(170,100);
+                    linha.lineTo(240,300);
+                    linha.stroke();
+
+                    circulo1.fillStyle = "yellow";
+                    circulo1.beginPath();
+                    circulo1.arc(200, 200, 25 + 25 * Math.sin(tempo/500), 0, 2 * Math.PI);
+                    circulo1.fill();
+
+                    circulo1.lineWidth = 2;
+                    circulo1.strokeStyle = "aqua"; 
+                    circulo1.stroke();
+
+                    curva.beginPath();
+                    curva.lineWidth = 5;
+                    curva.strokeStyle = "red";
+                    curva.moveTo(500,500);
+                    curva.quadraticCurveTo(650,200, 800, 500);
+                    curva.stroke();
+
+                    requestAnimationFrame(animarCirculo1); //garante que a animação continue
+                }
+
+                requestAnimationFrame(animarCirculo1); //chamando a função de animação
+
+                
+                let quad = figura.getContext("2d");
+                let posX = 0;
+
+                function animate() {
+                    quad.clearRect(0,0, figura.width, figura.height);
+
+                    quad.fillStyle = "FF0000";
+                    quad.fillRect(posX, 50, 50, 50);
+
+                    posX +=1;
+
+                    if(posX > figura.width) {
+                        posX = -50;
+                    }
+                    requestAnimationFrame(animate);
+                }
+                requestAnimationFrame(animate);
+                
+            }   
+        }
+
+
+            
+
+        window.onload = desenhar;
+    </script>
+</head>
+<body>
+    <canvas id="minhaTela" height="900" width="900">
+</body>
+</html>

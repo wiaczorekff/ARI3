@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>barquinho de svg</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        svg{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <svg width="800px" height="500px">
+
+    <g>
+        <!-- Trapézio do barco -->
+        <polygon 
+            points="150,350 250,350 300,250 100,250" 
+            fill="brown" 
+            stroke="black" 
+            stroke-width="3"></polygon>
+        
+        <!-- Janelas do barco (círculos) -->
+        <circle 
+            cx="160" 
+            cy="310" 
+            r="10" 
+            fill="white" 
+            stroke="black" 
+            stroke-width="2">
+        </circle>
+        
+        <circle 
+        cx="200" 
+        cy="310" 
+        r="10" 
+        fill="white"
+         stroke="black" 
+         stroke-width="2">
+        </circle>
+
+        <circle 
+        cx="240" 
+        cy="310" 
+        r="10" 
+        fill="white" 
+        stroke="black" 
+        stroke-width="2">
+    </circle>
+        
+        <!-- Linha do mastro -->
+        <line 
+        x1="210" 
+        y1="250" 
+        x2="210" 
+        y2="140" 
+        stroke="black" 
+        stroke-width="3">
+    </line>
+        
+        <!-- Bandeira do barco (triângulo) -->
+        <polygon 
+        points="210,170 350,100 210,100" 
+        fill="red" 
+        stroke="black" 
+        stroke-width="2">
+    </polygon>
+</g>
+
+
+<g transform="translate(250,190) rotate(35, 385,385) ">
+    <!-- Trapézio do barco -->
+    <polygon 
+        points="150,350 250,350 300,250 100,250" 
+        fill="brown" 
+        stroke="black" 
+        stroke-width="3"></polygon>
+    
+    <!-- Janelas do barco (círculos) -->
+    <circle 
+        cx="160" 
+        cy="310" 
+        r="10" 
+        fill="white" 
+        stroke="black" 
+        stroke-width="2">
+    </circle>
+    
+    <circle 
+    cx="200" 
+    cy="310" 
+    r="10" 
+    fill="white"
+     stroke="black" 
+     stroke-width="2">
+    </circle>
+
+    <circle 
+    cx="240" 
+    cy="310" 
+    r="10" 
+    fill="white" 
+    stroke="black" 
+    stroke-width="2">
+</circle>
+    
+    <!-- Linha do mastro -->
+    <line 
+    x1="210" 
+    y1="250" 
+    x2="210" 
+    y2="140" 
+    stroke="black" 
+    stroke-width="3">
+</line>
+    
+    <!-- Bandeira do barco (triângulo) -->
+    <polygon 
+    points="210,170 350,100 210,100" 
+    fill="red" 
+    stroke="black" 
+    stroke-width="2">
+</polygon>
+</g>
+      </svg>
+      
+      
+      
+</body>
+</html>

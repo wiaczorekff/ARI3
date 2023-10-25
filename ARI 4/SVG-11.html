@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function desenhar() {
+            var figura = document.querySelector("#minhaTela");
+
+            if (figura.getContext) {
+
+                let quad = figura.getContext("2d");
+                let posX = 0;
+                let posX2 = figura.width;
+                let posY = 0;
+                let posY2 = figura.height;
+
+                function animate() {
+                    quad.clearRect(0, 0, figura.width, figura.height);
+
+                    quad.fillStyle = "blue";
+                    quad.fillRect(posX, 50, 50, 50);
+
+                    quad.fillStyle = "yellow";
+                    quad.fillRect(posX2, 150, 50, 50);
+
+                    quad.fillStyle = "green"; // Adicionei um retângulo verde
+                    quad.fillRect(100, posY, 50, 50);
+
+                    quad.fillStyle = "red"; // Adicionei um retângulo vermelho
+                    quad.fillRect(200, posY2, 50, 50);
+
+                    posX += 5;
+                    posX2 -= 5;
+                    posY += 5;
+                    posY2 -= 5;
+
+                    if (posX > figura.width) {
+                        posX = 0;
+                    }
+
+                    if (posX2 < 0) {
+                        posX2 = figura.width;
+                    }
+
+                    if (posY > figura.height) {
+                        posY = 0;
+                    }
+
+                    if (posY2 < 0) {
+                        posY2 = figura.height;
+                    }
+
+                    requestAnimationFrame(animate);
+                }
+                requestAnimationFrame(animate);
+
+            }
+        }
+
+        window.onload = desenhar;
+    </script>
+</head>
+<body>
+    <canvas id="minhaTela" height="900" width="900">
+</body>
+</html>

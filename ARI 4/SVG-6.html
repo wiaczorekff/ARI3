@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>canva</title>
+    <script>
+		//criar uma função
+		function desenhar() {
+			var figura = document.querySelector("#minhaTela"); 
+		//testamos se o elemento figura (que é o canvas) tem o método getContext
+			if(figura.getContext) { 
+				//se existir, vamos criar um retângulo
+				var retangulo = figura.getContext("2d"); 
+				retangulo.fillStyle = "blue";
+				retangulo.fillRect(50,50,300,400); //(x,y,width,height)
+
+                var linha = figura.getContext("2d");
+                linha.lineWidth = 5;
+                linha.strokeStyle = "red";
+                linha.moveTo(100,200);//inicio da linha
+                linha.lineTo(170,100);//fim da linha
+
+					}   }
+//função será chamada após o carregamento completo da página
+		window.onload = desenhar;
+</script>
+</head>
+<body>
+    <canvas id="minhaTela" height="500" width="600"></canvas>
+</body>
+</html>
