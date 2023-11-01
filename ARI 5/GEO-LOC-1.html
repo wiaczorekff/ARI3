@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>geolocalização</title>
+</head>
+<body>
+    <label>
+        Latitude:<span id="lat"></span>
+    </label>
+    <br>
+    <label>
+        longitude:<span id="lon"></span>
+    </label>
+
+
+
+    <script>
+//declarando uma função chamada getlocation, que será responsavel por obter a localização do user
+
+        function getLocation(){
+            //verificando se o navegador suporta a API geolocation
+            if(!navigator.geolocation){
+                return null;
+            }
+            //se ele passsar pelo erro, pegamos a localização
+            navigator.geolocation.getCurrentPosition(function(pos){
+                document.getElementById("lat").innerText = pos.coords.latitude;
+                document.getElementById("lon").innerText = pos.coords.longitude;
+            })
+        }
+
+
+        getLocation();
+
+    </script>
+</body>
+</html>
