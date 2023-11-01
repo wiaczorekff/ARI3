@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Cria um elemento canvas
+        let canvas = document.createElement('canvas');
+        canvas.width = 400; // Definir a largura do canvas
+        canvas.height = 250; // Definir a altura do canvas
+        document.body.appendChild(canvas);
+        let ctx = canvas.getContext('2d');
+
+        // Desenha uma curva de Bézier quadrática
+        ctx.beginPath();
+        ctx.moveTo(50, 150); // Início da curva
+        ctx.quadraticCurveTo(230, 200, 350, 150); // Parâmetros da curva
+        ctx.stroke(); // Desenha a curva
+
+        // Desenha uma curva de Bézier cúbica
+        ctx.beginPath();
+        ctx.moveTo(50, 50); // Início da curva
+        ctx.bezierCurveTo(120, 20, 200, 200, 300, 50); // Parâmetros da curva
+        ctx.stroke(); // Desenha a curva
+    </script>
+</body>
+</html>
