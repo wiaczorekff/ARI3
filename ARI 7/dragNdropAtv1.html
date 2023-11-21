@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Tarefas</title>
+  <style>
+    #a-fazer, #em-progresso, #concluido {
+      border: 1px solid black;
+      padding: 10px;
+      margin: 10px;
+      width: 200px;
+      height: 300px;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    #a-fazer input[type="text"] {
+      width: 150px;
+      margin-right: 10px;
+    }
+
+    #a-fazer button {
+      margin-top: 5px;
+    }
+  </style>
+
+<script>
+  //remove o padrão html para poder arrastar a imagem
+    function allowDrop(ev){
+        ev.preventDefault();
+    }
+    //função para arrastar
+    function drag(ev){
+        //para visualizar as propriedades associadas ao evento criado
+        console.log('evento de arrasto', ev);
+        
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+    //função para soltar
+    function drop(ev){
+        ev.preventDefault();
+        let data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+    }
+
+    window.onload = function() {
+    document.getElementById("adicionar-tarefa").addEventListener("click", function() {
+      var tarefa = document.getElementById("nova-tarefa").value;
+      var li = document.createElement("li");
+      li.setAttribute("draggable", "true");
+      li.setAttribute("ondragstart", "drag(event)");
+      li.id = Date.now(); // id único para cada tarefa
+      li.appendChild(document.createTextNode(tarefa));
+      document.getElementById("lista-a-fazer").appendChild(li);
+      document.getElementById("nova-tarefa").value = "";
+    });
+  };
+</script>
+</head>
+<body>
+    
+    <input type="text" id="nova-tarefa" placeholder="Nova Tarefa">
+    <button id="adicionar-tarefa">Adicionar</button>
+
+    <div id="tarefas">
+    <div id="a-fazer" ondragover="allowDrop(event)" ondrop="drop(event)">
+      <h2>A Fazer</h2>
+      <ul id="lista-a-fazer"></ul>
+    </div>
+
+    <div id="em-progresso" ondragover="allowDrop(event)" ondrop="drop(event)">
+      <h2>Em Progresso</h2>
+      <ul id="lista-em-progresso"></ul>
+    </div>
+
+
+    <div id="concluido" ondragover="allowDrop(event)" ondrop="drop(event)">
+      <h2>Concluído</h2>
+      <ul id="lista-concluido"></ul>
+    </div>
+  </div>
+
+</body>
+</html>
