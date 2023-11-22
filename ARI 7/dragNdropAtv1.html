@@ -3,24 +3,59 @@
 <head>
   <title>Lista de Tarefas</title>
   <style>
-    #a-fazer, #em-progresso, #concluido {
-      border: 1px solid black;
-      padding: 10px;
-      margin: 10px;
-      width: 200px;
-      height: 300px;
-      display: inline-block;
-      vertical-align: top;
-    }
+   #a-fazer, #em-progresso, #concluido {
+    padding: 10px;
+    margin: 10px;
+    width: 30%;
+    height: auto;
+    display: inline-block;
+    text-align: center;
+    background-color: rgba(221, 230, 230, 0.806);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    vertical-align: top; 
+}
 
-    #a-fazer input[type="text"] {
-      width: 150px;
-      margin-right: 10px;
-    }
+li{
+  text-align: left;
+  list-style-type: none;
+  font-size: 22px;
+  background-color: rgb(254, 255, 255);
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid rgba(184, 181, 181, 0.696);
+  
 
-    #a-fazer button {
-      margin-top: 5px;
-    }
+}
+  #adicionarTarefa{
+    text-align: center;
+    margin-bottom: 35px;
+  }
+
+  input{
+    width: 300px;
+    height: 30px;
+    border: 1px solid rgb(232, 223, 223);
+  }
+
+  button{
+    background: #00a22bc4;
+    color: white;
+    border-style: none;
+    height: 37px;
+    text-shadow: none;
+    border-radius: 7%;
+  }
+
+  button:hover {
+    background-color: #3fe36bc4;
+    color:white;
+  }
+
+  #tarefas{
+    width: auto;
+  }
+   
   </style>
 
 <script>
@@ -43,27 +78,42 @@
     }
 
     window.onload = function() {
-    document.getElementById("adicionar-tarefa").addEventListener("click", function() {
-      var tarefa = document.getElementById("nova-tarefa").value;
-      var li = document.createElement("li");
-      li.setAttribute("draggable", "true");
-      li.setAttribute("ondragstart", "drag(event)");
-      li.id = Date.now(); // id único para cada tarefa
-      li.appendChild(document.createTextNode(tarefa));
-      document.getElementById("lista-a-fazer").appendChild(li);
-      document.getElementById("nova-tarefa").value = "";
+  document.getElementById("adicionar-tarefa").addEventListener("click", function() {
+    var tarefa = document.getElementById("nova-tarefa").value;
+    var li = document.createElement("li");
+    li.setAttribute("draggable", "true");
+    li.setAttribute("ondragstart", "drag(event)");
+    li.id = Date.now(); // id único para cada tarefa
+    li.appendChild(document.createTextNode(tarefa));
+    document.getElementById("lista-a-fazer").appendChild(li);
+    document.getElementById("nova-tarefa").value = "";
+
+  //Ajusta a altura das divs para que não fiquem com alturas diferentes ao colocar uma tarefa na div
+    var divs = document.querySelectorAll('#a-fazer, #em-progresso, #concluido');
+    var maxHeight = 0;
+    divs.forEach(function(div) {
+      if (div.offsetHeight > maxHeight) {
+        maxHeight = div.offsetHeight;
+      }
     });
-  };
+    divs.forEach(function(div) {
+      div.style.height = maxHeight + 'px';
+    });
+  });
+};
+
 </script>
 </head>
 <body>
-    
-    <input type="text" id="nova-tarefa" placeholder="Nova Tarefa">
-    <button id="adicionar-tarefa">Adicionar</button>
 
-    <div id="tarefas">
+  <div id="adicionarTarefa">
+    <input type="text" id="nova-tarefa" placeholder="Digite uma nova tarefa">
+    <button id="adicionar-tarefa">Adicionar Tarefa</button>
+  </div>
+
+  <div id="tarefas">
     <div id="a-fazer" ondragover="allowDrop(event)" ondrop="drop(event)">
-      <h2>A Fazer</h2>
+      <h2>Para Fazer</h2>
       <ul id="lista-a-fazer"></ul>
     </div>
 
@@ -71,7 +121,6 @@
       <h2>Em Progresso</h2>
       <ul id="lista-em-progresso"></ul>
     </div>
-
 
     <div id="concluido" ondragover="allowDrop(event)" ondrop="drop(event)">
       <h2>Concluído</h2>
